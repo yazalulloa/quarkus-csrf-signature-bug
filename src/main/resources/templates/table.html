@@ -1,0 +1,19 @@
+{@java.util.List<String> list}
+
+{#for id in list}
+    <tr>
+    <td>{inject:csrf.token}</td>
+    <td>{id}</td>
+    <td>
+        <button hx-get="/api/get">GET</button>
+        <button hx-post="/api/post">POST</button>
+        <button hx-put="/api/put">PUT</button>
+        <button hx-delete="/api/delete">DELETE</button>
+    </td>
+    </tr>
+{/for}
+
+<tr hx-get="/api/table"
+    hx-trigger="revealed"
+    hx-swap="outerHTML">
+</tr>

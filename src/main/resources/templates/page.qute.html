@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello {name ?: "Qute"}</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        h1 {
+            color: #4695EB;
+            font-size: 6vw;
+        }
+
+        h1 b {
+            color: #be9100;
+        }
+
+        p {
+            font-size: 2vw;
+        }
+    </style>
+</head>
+<body hx-headers='{"{inject:csrf.headerName}":"{inject:csrf.token}"}'>
+<h1>Hello <b>{name ?: "Qute"}</b></h1>
+
+<p>Create your web page using Quarkus RESTEasy & Qute</p>
+
+{!<button hx-get="/api/get">GET REQUEST</button>!}
+{!<button hx-post="/api/post">POST REQUEST</button>!}
+{!<button hx-put="/api/put">PUT REQUEST</button>!}
+{!<button hx-delete="/api/delete">DELETE REQUEST</button>!}
+
+<table>
+    <thead>
+    <tr>
+        <th>Csrf-token</th>
+        <th>ID</th>
+    </thead>
+    <tbody>
+    <tr hx-get="/api/table" hx-trigger="load" hx-swap="outerHTML">
+    </tbody>
+</table>
+</body>
+</html>
